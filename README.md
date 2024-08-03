@@ -3,6 +3,6 @@
 
 [![Test](https://github.com/Peredery/rails-project-66/actions/workflows/tests.yml/badge.svg)](https://github.com/Peredery/rails-project-66/actions/workflows/tests.yml)
 
-[This project on Render](https://onrender.com)
+[This project on Render](https://rails-project-66-4lqn.onrender.com/)
 
 Repository cheker
