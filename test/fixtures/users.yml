@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  email      :string
+#  nickname   :string
+#  token      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  nickname: <%= Faker::Name.name %>
+  email: <%= Faker::Internet.email %>
+  token: <%= SecureRandom.uuid_v4 %>
