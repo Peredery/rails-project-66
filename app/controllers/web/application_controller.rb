@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-module Web
-  class ApplicationController < ApplicationController
-    include Authentication
-  end
+class Web::ApplicationController < ApplicationController
+  include Authentication
 end
