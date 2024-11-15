@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User::FindOrCreate < ActiveInteraction::Base
+class User::FindOrCreate < InteractionsBase
   hash :auth_params do
     hash :info do
       string :email

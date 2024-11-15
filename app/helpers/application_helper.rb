@@ -15,4 +15,8 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
+
+  def attr_or_dash(attr)
+    attr.presence || '-'
+  end
 end

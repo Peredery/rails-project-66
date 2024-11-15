@@ -17,5 +17,12 @@ if Rails.env.production?
     # of sampled transactions.
     # We recommend adjusting this value in production.
     config.profiles_sample_rate = 1.0
+
+    if Rails.env.development?
+      config.before_send = lambda do |event, _hint|
+        Logger.error(event.to_hash)
+        nil
+      end
+    end
   end
 end

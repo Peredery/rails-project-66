@@ -1,9 +1,44 @@
 ---
 en:
   app_name: Repository Quality Analyzer
+  back_to_repository: Back to repository
+  check:
+    attributes:
+      commit_id: Last commit id
+      created_at: Started at
+      passed: Linter passed?
+      state: State
+    errors:
+      file: File
+      location: Location
+      rule: Rule
+  checks:
+    show:
+      title: "Check #%{id} details"
   layouts:
     application:
       title: Repository Quality Analyzer
+    shared:
+      navbar:
+        home: Home
+        repositories: Repositories
+        sign_in: Sign in
+        sign_out: Sign out
+  linter:
+    cannot_start: Cannot start
+  login:
+    failure: Failure
+    success: Success
+  logout:
+    success: Success
+  need_login: Need login
+  not_authorized: Not authorized
+  repository:
+    attributes:
+      created_at: Created at
+      language: Language
+      name: Name
+      updated_at: Updated at
   web:
     home:
       index:
@@ -11,3 +46,25 @@ en:
         subdescription: A project that helps to automatically monitor the quality of repositories on Github. It tracks changes and runs them through built-in analyzers. Then generates reports and sends them to the user.
         subtitle: Why?
         title: Repository Quality Analyzer
+    repositories:
+      checks:
+        create:
+          failure: Failure
+          success: Success
+        show:
+          commit_id: Commit
+          created_at: Started at
+          errors_count: Errors count
+          not_finished: Not finished
+          passed: Linter passed
+          state: State
+      create:
+        errors: Errors
+        success: Success
+      index:
+        empty_checks: You don't have any checks
+        last_cheks_status: Last cheks status
+        new_repository: New repository
+      show:
+        back: Back
+        run_check: Run check

@@ -34,7 +34,7 @@ gem 'jbuilder'
 gem 'net-pop', github: 'ruby/net-pop'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+gem 'redis', '>= 4.0.1'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -50,6 +50,10 @@ gem 'bootsnap', require: false
 
 gem 'active_interaction'
 
+gem 'aasm'
+gem 'dry-container'
+gem 'enumerize'
+gem 'octokit'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
@@ -59,11 +63,9 @@ gem 'slim-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-group :production do
-  gem 'sentry-rails'
-  gem 'sentry-ruby'
-  gem 'stackprof'
-end
+gem 'sentry-rails'
+gem 'sentry-ruby'
+gem 'stackprof'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -74,10 +76,12 @@ group :development, :test do
   gem 'faker'
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'ruby-lsp'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'i18n-tasks'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -90,5 +94,9 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'minitest-power_assert'
   gem 'selenium-webdriver'
+  gem 'webmock'
 end
+
+gem 'pundit', '~> 2.4'

@@ -1,0 +1,16 @@
+= link_to new_repository_path, class: 'btn btn-primary' do
+  = t('.new_repository')
+
+- if @repositories.any?
+  table.table.table-striped.table-hover.mt-4
+    thead
+      tr
+        th = t('repository.attributes.name')
+        th = t('repository.attributes.language')
+        th = t('.last_cheks_status')
+    tbody
+      - @repositories.each do |repository|
+        tr
+          td = link_to attr_or_dash(repository.name), repository_path(repository)
+          td = attr_or_dash(repository.language)
+          td = repository.checks.last ? repository.checks.last.aasm.human_state : t('.empty_checks')

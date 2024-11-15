@@ -7,9 +7,9 @@ class Web::AuthController < Web::ApplicationController
 
     if user.valid?
       sign_in(user.result)
-      flash[:notice] = t('.login.success')
+      flash[:notice] = t('login.success')
     else
-      flash[:alert] = t('.login.failure')
+      flash[:alert] = t('login.failure')
     end
 
     redirect_to root_path

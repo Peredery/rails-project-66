@@ -9,5 +9,13 @@ Rails.application.routes.draw do
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     delete 'auth/logout', to: 'auth#destroy'
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
+
+    resources :repositories do
+      resources :checks, only: %i[create show], module: 'repositories'
+    end
+  end
+
+  namespace :api do
+    resources :checks, only: %i[create]
   end
 end

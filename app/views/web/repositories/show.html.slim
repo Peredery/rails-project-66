@@ -1,0 +1,24 @@
+h1 = @repository.full_name
+
+= link_to t('.run_check'), repository_checks_path(@repository), class: 'btn btn-primary', data: { turbo_method: :post }
+
+p.mt-4
+  strong.me-2 = t('repository.attributes.name')
+  = attr_or_dash(@repository.full_name)
+
+p
+  strong.me-2 = t('repository.attributes.language')
+  = attr_or_dash(@repository.language)
+
+p
+  strong.me-2 = t('repository.attributes.created_at')
+  = @repository.created_at
+
+p
+  strong.me-2 = t('repository.attributes.updated_at')
+  = @repository.updated_at
+
+= render 'web/repositories/checks/list', checks: @repository.checks
+
+
+= link_to t('.back'), repositories_path, class: 'btn btn-secondary'

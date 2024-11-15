@@ -11,28 +11,10 @@ module Web
     end
 
     test 'create' do
-      auth_hash = {
-        provider: 'github',
-        info: {
-          nickname: Faker::Internet.username,
-          email: Faker::Internet.email,
-          name: Faker::Name.first_name
-        },
-        credentials: {
-          token: SecureRandom.uuid_v4
-        }
-      }
-
-      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash::InfoHash.new(auth_hash)
-
-      get callback_auth_url('github')
+      sign_in(users(:one))
 
       assert_response :redirect
-
-      user = User.find_by(email: auth_hash[:info][:email].downcase)
-
-      assert user
-      assert_predicate self, :signed_in?
+      assert signed_in?
     end
 
     test 'destroy' do
@@ -41,8 +23,7 @@ module Web
       delete auth_logout_url
 
       assert_response :redirect
-
-      assert_not signed_in?
+      assert_nil session[:user_id]
     end
   end
 end

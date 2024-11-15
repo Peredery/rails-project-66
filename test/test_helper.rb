@@ -3,6 +3,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'webmock/minitest'
 
 OmniAuth.config.test_mode = true
 
@@ -15,6 +16,9 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def load_fixture(filename)
+      File.read(File.dirname(__FILE__) + "/fixtures/#{filename}")
+    end
   end
 end
 
@@ -23,10 +27,13 @@ module ActionDispatch
     def sign_in(user, _options = {})
       auth_hash = {
         provider: 'github',
-        token: SecureRandom.uuid_v4,
+        uid: '12345',
         info: {
           email: user.email,
           nickname: user.nickname
+        },
+        credentials: {
+          token: user.token
         }
       }
 

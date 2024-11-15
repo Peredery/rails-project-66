@@ -6,6 +6,10 @@ module Authentication
   included do
     before_action :authenticate_user_from_session
     protect_from_forgery with: :exception
+
+    helper_method :current_user, :signed_in?
+
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   end
 
   def user_not_authorized
@@ -20,6 +24,10 @@ module Authentication
     Current.user ||= User.find_by(id: session[:user_id])
   end
 
+  def current_user
+    Current.user
+  end
+
   def signed_in?
     current_user.present?
   end
@@ -31,6 +39,6 @@ module Authentication
 
   def sign_out
     reset_session
-    redirect_to root_path, notice: t('.logout.success')
+    redirect_to root_path, notice: t('logout.success')
   end
 end
