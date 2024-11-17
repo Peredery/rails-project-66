@@ -5,8 +5,8 @@ class Api::ApplicationController < ApplicationController
 
   def check_github_secret_token
     calculated_signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), ENV.fetch('GITHUB_SECRET_TOKEN', nil), request.raw_post)
-    signature_from_request = request.headers['HTTP_X_HUB_SIGNATURE_256'].slice('sha256=')
+    signature_from_request = request.headers['HTTP_X_HUB_SIGNATURE_256'].delete_prefix('sha256=')
 
-    head :forbidden until Rack::Utils.secure_compare(calculated_signature, signature_from_request)
+    head :forbidden unless Rack::Utils.secure_compare(calculated_signature, signature_from_request)
   end
 end

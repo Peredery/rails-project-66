@@ -4,7 +4,7 @@
       tr
         th
         th scope="col"
-          = t('check.attributes.state')
+          = t('check.attributes.aasm_state')
         th scope="col"
           = t('check.attributes.commit_id')
         th scope="col"
@@ -16,7 +16,7 @@
       tr
         td 
           = link_to check.id, repository_check_path(check.repository, check)
-        td = check.state
+        td = check.aasm_state
         td = check.commit_id ? link_to(check.commit_id, github_commit_link(check.repository, check.commit_id)) : '-'
         td = check.passed
         td = check.created_at

@@ -13,9 +13,9 @@
 one:
   nickname: <%= Faker::Name.name %>
   email: <%= Faker::Internet.email %>
-  token: <%= SecureRandom.uuid_v4 %>
+  token: <%= 'token123' %>
 
 two:
   nickname: <%= Faker::Name.name %>
   email: <%= Faker::Internet.email %>
-  token: <%= SecureRandom.uuid_v4 %>
+  token: <%= 'token456' %>

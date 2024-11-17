@@ -5,9 +5,9 @@
 # Table name: repository_checks
 #
 #  id            :integer          not null, primary key
+#  aasm_state    :string
 #  passed        :boolean          default(FALSE)
 #  result        :json
-#  state         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  commit_id     :string
@@ -26,7 +26,7 @@ class Repository::Check < ApplicationRecord
 
   belongs_to :repository, class_name: 'Repository', inverse_of: :checks
 
-  aasm column: :state do
+  aasm do
     state :pending, initial: true
     state :in_progress
     state :failed

@@ -7,7 +7,7 @@ en:
       commit_id: Last commit id
       created_at: Started at
       passed: Linter passed?
-      state: State
+      aasm_state: State
     errors:
       file: File
       location: Location
@@ -57,7 +57,7 @@ en:
           errors_count: Errors count
           not_finished: Not finished
           passed: Linter passed
-          state: State
+          aasm_state: State
       create:
         errors: Errors
         success: Success

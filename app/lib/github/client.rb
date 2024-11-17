@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Github::Client
+  include Rails.application.routes.url_helpers
+
   def initialize(user:)
     @user = user
     @client = Octokit::Client.new(access_token: @user.token, auto_paginate: true)
@@ -35,7 +37,7 @@ class Github::Client
       full_name,
       'web',
       {
-        url: 'https://1c2d-164-92-141-20.ngrok-free.app/api/checks',
+        url: api_checks_url,
         content_type: 'json',
         secret: ENV.fetch('GITHUB_SECRET_TOKEN', nil)
       },

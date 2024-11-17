@@ -3,7 +3,7 @@ class CreateRepositoryChecks < ActiveRecord::Migration[7.1]
     create_table :repository_checks do |t|
       t.references :repository, null: false, foreign_key: true
       t.string :commit_id
-      t.string :state
+      t.string :aasm_state
       t.json :result
       t.boolean :passed, default: false
 

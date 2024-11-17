@@ -49,5 +49,10 @@ module ActionDispatch
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
     end
+
+    def calculate_x_hmac(body)
+      hmac = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), ENV.fetch('GITHUB_SECRET_TOKEN', 'secret1'), body)
+      "sha256=#{hmac}"
+    end
   end
 end
