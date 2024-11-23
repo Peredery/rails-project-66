@@ -63,13 +63,13 @@ gem 'slim-rails'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'stackprof'
+gem 'dotenv'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'annotate'
   gem 'byebug'
   gem 'debug', platforms: %i[mri windows]
-  gem 'dotenv'
   gem 'faker'
   gem 'rubocop'
   gem 'rubocop-rails'

@@ -12,10 +12,5 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     post(api_checks_url, headers: { 'HTTP_X_HUB_SIGNATURE_256' => x_hmac }, params:)
     assert_response :success
-
-    Repository.find_by(github_id: repository.github_id).update(name: 'HUI')
-    Repository.find_by(github_id: repository.github_id).touch
-    puts repository.reload
-    # assert { repository.checks.count == 2 }
   end
 end

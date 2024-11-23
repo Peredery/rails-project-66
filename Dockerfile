@@ -47,11 +47,12 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+ENV BASE_URL=$BASE_URL
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
 # Final stage for app image
-FROM base
+FROM build
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \

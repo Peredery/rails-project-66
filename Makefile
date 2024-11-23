@@ -9,3 +9,6 @@ tests:
 
 setup:
 	cp .env.example .env
+
+c:
+	docker compose run --rm web bin/rails c
