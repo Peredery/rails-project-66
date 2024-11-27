@@ -4,17 +4,17 @@ en:
   back_to_repository: Back to repository
   check:
     attributes:
+      aasm_state: State
       commit_id: Last commit id
       created_at: Started at
       passed: Linter passed?
-      aasm_state: State
     errors:
       file: File
       location: Location
       rule: Rule
   checks:
     show:
-      title: "Check #%{id} details"
+      title: 'Check #%{id} details'
   layouts:
     application:
       title: Repository Quality Analyzer
@@ -39,6 +39,11 @@ en:
       language: Language
       name: Name
       updated_at: Updated at
+    check_mailer:
+      notify_status_to_user:
+        check_link: Check link
+        hello: Hello '%{name}'
+        status: Your check is completed
   web:
     home:
       index:
@@ -52,12 +57,12 @@ en:
           failure: Failure
           success: Success
         show:
+          aasm_state: State
           commit_id: Commit
           created_at: Started at
           errors_count: Errors count
           not_finished: Not finished
           passed: Linter passed
-          aasm_state: State
       create:
         errors: Errors
         success: Success
