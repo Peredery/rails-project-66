@@ -35,7 +35,6 @@ class Web::RepositoriesController < Web::ApplicationController
     authorize repository
 
     output = Repository::Create.run(user: current_user, github_id: repository_params[:github_id])
-
     if output.valid?
       flash[:notice] = t('.success')
       Repository::UpdateAndSetWebhookJob.perform_later(output.result)

@@ -8,7 +8,7 @@ class Web::Repositories::ChecksController < ApplicationController
 
     authorize @check
 
-    redirect_to repository_path(repository), alert: t('.not_finished') unless @check.completed?
+    redirect_to repository_path(repository), alert: t('.not_finished') unless @check.finished?
   end
 
   def create

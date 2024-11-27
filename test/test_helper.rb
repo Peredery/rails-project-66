@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
+ENV['GITHUB_SECRET_TOKEN'] = 'secret1'
+
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'

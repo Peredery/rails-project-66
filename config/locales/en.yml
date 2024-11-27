@@ -43,7 +43,7 @@ en:
       notify_status_to_user:
         check_link: Check link
         hello: Hello '%{name}'
-        status: Your check is completed
+        status: Your check is finished
   web:
     home:
       index:

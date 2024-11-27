@@ -23,13 +23,13 @@
 one:
   repository: one
   commit_id: 49f7f1b
-  aasm_state: completed
+  aasm_state: finished
   result: {}
   passed: false
 
 two:
   repository: two
   commit_id: 0b1b2c3
-  aasm_state: completed
+  aasm_state: finished
   result: {}
   passed: true

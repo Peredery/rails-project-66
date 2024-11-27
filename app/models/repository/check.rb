@@ -29,19 +29,14 @@ class Repository::Check < ApplicationRecord
   aasm do
     state :pending, initial: true
     state :in_progress
-    state :failed
-    state :completed
+    state :finished
 
     event :start do
       transitions from: :pending, to: :in_progress
     end
 
-    event :fail do
-      transitions from: :in_progress, to: :failed
-    end
-
     event :complete do
-      transitions from: :in_progress, to: :completed
+      transitions from: :in_progress, to: :finished
     end
   end
 end
