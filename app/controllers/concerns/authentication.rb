@@ -25,7 +25,7 @@ module Authentication
   end
 
   def current_user
-    Current.user
+    Current.user || authenticate_user_from_session
   end
 
   def signed_in?

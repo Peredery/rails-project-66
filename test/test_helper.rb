@@ -49,7 +49,7 @@ module ActionDispatch
     end
 
     def current_user
-      @current_user ||= User.find_by(id: session[:user_id])
+      Current.user ||= User.find_by(id: session[:user_id])
     end
 
     def calculate_x_hmac(body)
