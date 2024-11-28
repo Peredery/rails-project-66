@@ -45,6 +45,10 @@ en:
         hello: Hello '%{name}'
         status: Your check is finished
   web:
+    auth:
+      destroy:
+        logout:
+          success: Success
     home:
       index:
         description: Practical programming
