@@ -4,7 +4,7 @@ class User::FindOrCreate < InteractionsBase
   hash :auth_params do
     hash :info do
       string :email
-      string :nickname
+      string :name
     end
     hash :credentials do
       string :token
@@ -13,7 +13,7 @@ class User::FindOrCreate < InteractionsBase
 
   def execute
     user = User.find_or_initialize_by(email: auth_params[:info][:email])
-    user.nickname = auth_params[:info][:nickname]
+    user.nickname = auth_params[:info][:name]
     user.token = auth_params[:credentials][:token]
     user.save
 

@@ -32,7 +32,7 @@ module ActionDispatch
         uid: '12345',
         info: {
           email: user.email,
-          nickname: user.nickname
+          name: user.nickname
         },
         credentials: {
           token: user.token
