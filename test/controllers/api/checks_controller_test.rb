@@ -12,5 +12,6 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     post(api_checks_url, headers: { 'HTTP_X_HUB_SIGNATURE_256' => x_hmac }, params:)
     assert_response :success
+    assert { repository.checks.last.finished? }
   end
 end

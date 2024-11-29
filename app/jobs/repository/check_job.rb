@@ -5,10 +5,7 @@ class Repository::CheckJob < ApplicationJob
 
   def perform(check)
     interactor = Repository::PerformLint.run(check:)
-    if interactor.valid?
-      Repository::CheckMailer.with(check:).notify_status_to_user.deliver_later
-    else
-      Sentry.capture_message(interactor.errors)
-    end
+
+    Repository::CheckMailer.with(check:).notify_status_to_user.deliver_later if interactor.valid?
   end
 end

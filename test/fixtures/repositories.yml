@@ -23,19 +23,15 @@
 #
 
 one:
-  name: MyString
-  github_id: MyString
-  full_name: MyString
-  language: MyString
-  clone_url: MyString
-  ssh_url: MyString
   user: one
+  name: stubbed_ruby
+  full_name: stubbed_user/stubbed_ruby
+  language: ruby
+  github_id: 123
 
 two:
-  name: MyString
-  github_id: MyString
-  full_name: MyString
-  language: MyString
-  clone_url: MyString
-  ssh_url: MyString
   user: two
+  name: stubbed_javascript
+  full_name: stubbed_user/stubbed_javascript
+  language: javascript
+  github_id: 345

@@ -12,7 +12,7 @@ table.table
       td = @check.aasm.human_state
     tr 
       td = t('.errors_count')
-      td = @check.result.size
+      td = @check.result&.size || 0
     tr
       td = t('.passed')
       td = @check.passed?
@@ -20,7 +20,7 @@ table.table
       td = t('.commit_id')
       td = link_to @check.commit_id, github_commit_link(@check.repository, @check.commit_id), target: '_blank'
 
-- if @check.result.any?   
+- if @check.result&.any?   
   table.table.table-hover.mb-5
     thead
       tr

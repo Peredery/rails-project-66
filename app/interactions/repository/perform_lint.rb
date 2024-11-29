@@ -15,15 +15,13 @@ class Repository::PerformLint < InteractionsBase
     if linter_service.valid?
       Repository::Check.transaction do
         check.result = linter_service.result[:errors]
-        check.complete!
         check.passed = check.result.empty?
+        check.complete!
         check.save
       end
     else
       errors.merge!(linter_service.errors)
     end
-  rescue StandardError => e
-    errors.add(:base, e.message)
   ensure
     GitUtils.remove_repo_from_disk(repository_path)
   end

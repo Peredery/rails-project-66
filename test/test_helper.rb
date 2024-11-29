@@ -2,6 +2,7 @@
 
 ENV['RAILS_ENV'] ||= 'test'
 ENV['GITHUB_SECRET_TOKEN'] = 'secret1'
+ENV['BASE_URL'] ||= 'localhost'
 
 require_relative '../config/environment'
 require 'rails/test_help'
@@ -11,6 +12,11 @@ OmniAuth.config.test_mode = true
 
 module ActiveSupport
   class TestCase
+    setup do
+      ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
+      ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = true
+    end
+
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
