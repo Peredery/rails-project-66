@@ -29,4 +29,8 @@ class Github::ClientStubbed
   def find_repository(github_id:)
     repositoreis.find { |repo| repo.id == github_id }
   end
+
+  def create_hook
+    true
+  end
 end
