@@ -21,6 +21,6 @@ class Repository::Create < InteractionsBase
   end
 
   def valid_github_id
-    ApplicationContainer.resolve(:github_client).new(user: user).find_repository(github_id:).present?
+    ApplicationContainer.resolve(:github_client).new(user:).find_repository(github_id:).present?
   end
 end
