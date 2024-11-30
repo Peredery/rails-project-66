@@ -3,14 +3,14 @@
 h1.mt-4 = t('checks.show.title', id: @check.id)
 
 table.table
-  tbody 
-    tr 
+  tbody
+    tr
       td = t('.created_at')
       td = @check.created_at
     tr
       td = t('.aasm_state')
       td = @check.aasm.human_state
-    tr 
+    tr
       td = t('.errors_count')
       td = @check.result&.size || 0
     tr
@@ -18,9 +18,9 @@ table.table
       td = @check.passed?
     tr
       td = t('.commit_id')
-      td = link_to @check.commit_id, github_commit_link(@check.repository, @check.commit_id), target: '_blank'
+      td = link_to @check.commit_id, github_commit_link(@check.repository, @check.commit_id), target: '_blank', rel: 'noopener'
 
-- if @check.result&.any?   
+- if @check.result&.any?
   table.table.table-hover.mb-5
     thead
       tr
@@ -30,9 +30,8 @@ table.table
     tbody
       - @check.result.each do |error|
         tr
-          td[colspan=3] = link_to error['file'], github_file_link(@check.repository, error['file'], @check.commit_id), target: '_blank'
+          td[colspan=3] = link_to error['file'], github_file_link(@check.repository, error['file'], @check.commit_id), target: '_blank', rel: 'noopener'
         tr
           td = error['message']
           td = error['rule']
           td = error['location']
-
