@@ -4,8 +4,6 @@ class Repository::Create < InteractionsBase
   string :github_id
   object :user, class: User
 
-  validate :valid_github_id
-
   def to_model
     user.repositories.build
   end
@@ -18,9 +16,5 @@ class Repository::Create < InteractionsBase
     end
 
     repository
-  end
-
-  def valid_github_id
-    ApplicationContainer.resolve(:github_client).new(user:).find_repository(github_id:).present?
   end
 end

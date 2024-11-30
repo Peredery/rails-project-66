@@ -38,9 +38,7 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   test 'should create repository' do
     sign_in(users(:one))
 
-    github_id = 123
-
-    Repository.find_by(github_id:).destroy
+    github_id = 999
 
     post repositories_path, params: { repository: { github_id: } }
 

@@ -13,11 +13,13 @@ class Github::ClientStubbed
                        full_name: 'stubbed_user/stubbed_ruby',
                        clone_url: 'https://github.com/stubbed_user/stubbed_ruby.git',
                        id: '123',
+                       language: 'ruby',
                        ssh_url: 'git@github.com:stubbed_user/stubbed_ruby.git'
                      }),
       Repository.new({
                        name: 'stubbed_javascript',
                        user_id: @user.id,
+                       language: 'javascript',
                        full_name: 'stubbed_user/stubbed_javascript',
                        clone_url: 'https://github.com/stubbed_user/stubbed_javascript.git',
                        id: '345',
@@ -27,7 +29,7 @@ class Github::ClientStubbed
   end
 
   def find_repository(github_id:)
-    repositories.find { |repo| repo.id.to_s == github_id.to_s }
+    repositories.find { |repo| repo.id.to_s == github_id.to_s } || repositories.first
   end
 
   def create_hook(_repo)

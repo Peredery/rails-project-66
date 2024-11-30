@@ -37,9 +37,6 @@ class Web::RepositoriesController < Web::ApplicationController
     output = Repository::Create.run(user: current_user, github_id: repository_params[:github_id])
     if output.valid?
       flash[:notice] = t('.success')
-      puts "$$$$"
-      puts output.result
-      puts "$$$$ #{repository.inspect}"
       Repository::UpdateAndSetWebhookJob.perform_later(output.result)
       redirect_to output.result
     else
