@@ -3,18 +3,18 @@
     thead
       tr
         th
-        th scope="col"
+        th scope='col'
           = t('check.attributes.aasm_state')
-        th scope="col"
+        th scope='col'
           = t('check.attributes.commit_id')
-        th scope="col"
+        th scope='col'
           = t('check.attributes.passed')
-        th scope="col"
+        th scope='col'
           = t('check.attributes.created_at')
     tbody
     - checks.each do |check|
       tr
-        td 
+        td
           = link_to check.id, repository_check_path(check.repository, check)
         td = check.aasm_state
         td = check.commit_id ? link_to(check.commit_id, github_commit_link(check.repository, check.commit_id)) : '-'

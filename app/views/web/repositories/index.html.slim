@@ -11,6 +11,7 @@
     tbody
       - @repositories.each do |repository|
         tr
-          td = link_to attr_or_dash(repository.name), repository_path(repository)
+          td = link_to attr_or_dash(repository.name),
+              repository_path(repository)
           td = attr_or_dash(repository.language)
           td = repository.checks.last ? repository.checks.last.aasm.human_state : t('.empty_checks')

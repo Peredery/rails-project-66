@@ -74,6 +74,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'ruby-lsp'
+  gem 'slim_lint'
 end
 
 group :development do

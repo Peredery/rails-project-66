@@ -1,6 +1,9 @@
 h1 = @repository.full_name
 
-= link_to t('.run_check'), repository_checks_path(@repository), class: 'btn btn-primary', data: { turbo_method: :post }
+= link_to t('.run_check'),
+  repository_checks_path(@repository),
+  class: 'btn btn-primary',
+  data: { turbo_method: :post }
 
 p.mt-4
   strong.me-2 = t('repository.attributes.name')
@@ -19,6 +22,5 @@ p
   = @repository.updated_at
 
 = render 'web/repositories/checks/list', checks: @repository.checks
-
 
 = link_to t('.back'), repositories_path, class: 'btn btn-secondary'
