@@ -30,7 +30,7 @@ table.table
     tbody
       - @check.result.each do |error|
         tr
-          td[colspan=3] = link_to error['file'], github_file_link(@check.repository, error['file'], @check.commit_id), target: '_blank', rel: 'noopener'
+          td[colspan=3] = link_to error['file'], github_file_link(@check.repository, error['file']), target: '_blank', rel: 'noopener'
         tr
           td = error['message']
           td = error['rule']
