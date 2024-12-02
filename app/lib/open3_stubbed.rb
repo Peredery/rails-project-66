@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'stringio'
-
 class StubbedProcessStatus
   def success?
     true

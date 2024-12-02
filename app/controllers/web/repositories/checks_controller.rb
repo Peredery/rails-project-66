@@ -25,6 +25,6 @@ class Web::Repositories::ChecksController < ApplicationController
   private
 
   def repository
-    @repository ||= current_user.repositories.includes(:checks).find(params[:repository_id])
+    @repository ||= current_user.repositories.find(params[:repository_id])
   end
 end
