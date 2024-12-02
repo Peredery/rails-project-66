@@ -8,17 +8,13 @@ class Web::RepositoriesController < Web::ApplicationController
   end
 
   def show
-    @repository = current_user.repositories.includes(:checks).find(params[:id])
-
-    authorize @repository
+    @repository = current_user.repositories.find(params[:id])
 
     @checks = @repository.checks.order(created_at: :desc)
   end
 
   def new
     @repository = current_user.repositories.new
-
-    authorize @repository
 
     output = Github::FetchRepositories.run(user: current_user)
 
@@ -32,8 +28,6 @@ class Web::RepositoriesController < Web::ApplicationController
 
   def create
     repository = Repository::Create.new(user: current_user, github_id: repository_params[:github_id]).to_model
-
-    authorize repository
 
     output = Repository::Create.run(user: current_user, github_id: repository_params[:github_id])
     if output.valid?

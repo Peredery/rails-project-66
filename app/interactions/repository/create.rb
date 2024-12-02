@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Repository::Create < InteractionsBase
-  string :github_id
-  object :user, class: User
+  object :repository, class: Repository
 
   def to_model
     user.repositories.build

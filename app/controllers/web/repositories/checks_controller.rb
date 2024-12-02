@@ -6,15 +6,11 @@ class Web::Repositories::ChecksController < ApplicationController
   def show
     @check = repository.checks.find(params[:id])
 
-    authorize @check
-
     redirect_to repository_path(repository), alert: t('.not_finished') unless @check.finished?
   end
 
   def create
     check = repository.checks.new
-
-    authorize check
 
     if check.save
       flash[:notice] = t('.success')

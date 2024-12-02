@@ -5,8 +5,6 @@ module Authentication
 
   included do
     helper_method :current_user, :user_signed_in?
-  rescue Pundit::NotAuthorizedError
-    redirect_to root_path, alert: t('not_authorized')
   end
 
   def authenticate_user!

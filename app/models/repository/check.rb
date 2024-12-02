@@ -30,6 +30,7 @@ class Repository::Check < ApplicationRecord
     state :pending, initial: true
     state :in_progress
     state :finished
+    state :failed
 
     event :start do
       transitions from: :pending, to: :in_progress
@@ -37,6 +38,10 @@ class Repository::Check < ApplicationRecord
 
     event :complete do
       transitions from: :in_progress, to: :finished
+    end
+
+    event :fail do
+      transitions from: :in_progress, to: :failed
     end
   end
 end
