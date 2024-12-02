@@ -29,10 +29,7 @@ en:
   login:
     failure: Failure
     success: Success
-  logout:
-    success: Success
   need_login: Need login
-  not_authorized: Not authorized
   repository:
     attributes:
       created_at: Created at
