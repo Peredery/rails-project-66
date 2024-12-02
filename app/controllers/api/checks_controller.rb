@@ -7,7 +7,7 @@ class Api::ChecksController < Api::ApplicationController
     check = repository.checks.build
 
     if check.save
-      Repository::CheckJob.perform_later(check)
+      Repository::CheckJob.perform_later(check_id: check.id)
 
       head :ok
     else

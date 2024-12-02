@@ -14,7 +14,7 @@ class Web::Repositories::ChecksController < Web::ApplicationController
 
     if check.save
       flash[:notice] = t('.success')
-      Repository::CheckJob.perform_later(check)
+      Repository::CheckJob.perform_later(check_id: check.id)
       redirect_to repository_path(repository)
     else
       flash[:alert] = t('.failure')

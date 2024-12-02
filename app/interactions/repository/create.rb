@@ -15,7 +15,7 @@ class Repository::Create < InteractionsBase
       errors.merge!(repository.errors)
     end
 
-    Repository::UpdateAndSetWebhookJob.perform_later(repository)
+    Repository::UpdateAndSetWebhookJob.perform_later(repository_id: repository.id)
 
     repository
   end

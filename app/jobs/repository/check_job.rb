@@ -3,7 +3,9 @@
 class Repository::CheckJob < ApplicationJob
   queue_as :checks
 
-  def perform(check)
+  def perform(check_id:)
+    check = Repository::Check.find(check_id)
+
     interactor = Repository::PerformLint.run(check:)
 
     Sentry.capture_message('Check failed', extra: { check: }) unless interactor.valid?

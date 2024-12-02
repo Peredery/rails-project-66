@@ -3,7 +3,9 @@
 class Repository::UpdateAndSetWebhookJob < ApplicationJob
   queue_as :repositories
 
-  def perform(repository)
+  def perform(repository_id:)
+    repository = Repository.find(repository_id)
+
     github_client = ApplicationContainer.resolve(:github_client).new(user: repository.user)
     repo_from_github = github_client.find_repository(github_id: repository.github_id)
     updated_attrs = repo_from_github.attributes.merge(repository.attributes.compact)
