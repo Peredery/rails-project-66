@@ -8,6 +8,6 @@ module Web::Repositories::ChecksHelper
   end
 
   def github_file_link(repository, path)
-    "#{GITHUB_URL}/#{repository.full_name}/blob/#{path}"
+    "#{GITHUB_URL}/#{repository.full_name}/#{path}"
   end
 end
