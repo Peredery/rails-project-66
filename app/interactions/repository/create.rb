@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Repository::Create < InteractionsBase
-  object :repository, class: Repository
+  string :github_id
+  object :user, class: User
 
   def to_model
     user.repositories.build
@@ -13,6 +14,8 @@ class Repository::Create < InteractionsBase
     unless repository.save
       errors.merge!(repository.errors)
     end
+
+    Repository::UpdateAndSetWebhookJob.perform_later(repository)
 
     repository
   end

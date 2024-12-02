@@ -27,15 +27,14 @@ class Web::RepositoriesController < Web::ApplicationController
   end
 
   def create
-    repository = Repository::Create.new(user: current_user, github_id: repository_params[:github_id]).to_model
-
     output = Repository::Create.run(user: current_user, github_id: repository_params[:github_id])
+
     if output.valid?
       flash[:notice] = t('.success')
-      Repository::UpdateAndSetWebhookJob.perform_later(output.result)
       redirect_to output.result
     else
       flash[:alert] = t('.errors')
+      @repository = output
       redirect_to new_repository_path
     end
   end
