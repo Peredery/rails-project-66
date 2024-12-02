@@ -9,9 +9,10 @@ class Web::RepositoriesController < Web::ApplicationController
 
   def show
     @repository = current_user.repositories.includes(:checks).find(params[:id])
-    @checks = @repository.checks.order(created_at: :desc)
 
     authorize @repository
+
+    @checks = @repository.checks.order(created_at: :desc)
   end
 
   def new
