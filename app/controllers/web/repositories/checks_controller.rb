@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Web::Repositories::ChecksController < ApplicationController
+class Web::Repositories::ChecksController < Web::ApplicationController
   before_action :authenticate_user!
 
   def show
