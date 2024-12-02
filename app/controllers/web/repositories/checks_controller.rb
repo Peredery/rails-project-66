@@ -11,7 +11,6 @@ class Web::Repositories::ChecksController < Web::ApplicationController
 
   def create
     check = repository.checks.new
-
     if check.save
       flash[:notice] = t('.success')
       Repository::CheckJob.perform_later(check_id: check.id)
