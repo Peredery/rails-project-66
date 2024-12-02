@@ -4,7 +4,7 @@ class Linters::Javascript < Linters::Base
   private
 
   def linter_command
-    "yarn --silent eslint --no-config-lookup --no-eslintrc -c ./eslint.config.mjs #{repository_path} --format json"
+    "yarn --silent eslint --no-config-lookup -c ./eslint.config.mjs #{repository_path} --format json"
   end
 
   def parse_errors(linter_output)

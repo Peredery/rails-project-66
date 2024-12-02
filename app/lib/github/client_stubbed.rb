@@ -6,26 +6,11 @@ class Github::ClientStubbed
   end
 
   def repositories
-    [
-      Repository.new({
-                       name: 'stubbed_ruby',
-                       user_id: @user.id,
-                       full_name: 'stubbed_user/stubbed_ruby',
-                       clone_url: 'https://github.com/stubbed_user/stubbed_ruby.git',
-                       id: '123',
-                       language: 'ruby',
-                       ssh_url: 'git@github.com:stubbed_user/stubbed_ruby.git'
-                     }),
-      Repository.new({
-                       name: 'stubbed_javascript',
-                       user_id: @user.id,
-                       language: 'javascript',
-                       full_name: 'stubbed_user/stubbed_javascript',
-                       clone_url: 'https://github.com/stubbed_user/stubbed_javascript.git',
-                       id: '345',
-                       ssh_url: 'git@github.com:stubbed_user/stubbed_javascript.git'
-                     })
-    ]
+    Rails.root.join('test/fixtures/files/repositories.json').open do |file|
+      JSON.parse(file.read).map do |repo|
+        Sawyer::Resource.new(Octokit.agent, repo)
+      end
+    end
   end
 
   def find_repository(github_id:)
