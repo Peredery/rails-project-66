@@ -30,6 +30,6 @@ one:
 two:
   repository: two
   commit_id: 0b1b2c3
-  aasm_state: finished
+  aasm_state: created
   result: {}
   passed: true
