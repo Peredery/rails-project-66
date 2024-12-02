@@ -4,7 +4,7 @@ class Linters::Ruby < Linters::Base
   private
 
   def linter_command
-    "bundle exec rubocop --format json #{repository_path}"
+    "bundle exec rubocop --config ./.rubocop.yml --format json #{repository_path}"
   end
 
   def parse_errors(linter_output)
