@@ -42,8 +42,11 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
     post repositories_path, params: { repository: { github_id: } }
 
-    assert { Repository.exists?(github_id:) }
+    created_repo = Repository.find_by(github_id:)
 
+    assert { created_repo }
+    assert { created_repo.name == 'stubbed_ruby' }
+    assert { created_repo.language == 'ruby' }
     assert_redirected_to repository_url(Repository.find_by(github_id:))
   end
 end
