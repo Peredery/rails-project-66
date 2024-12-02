@@ -19,7 +19,10 @@ class Repository::PerformLint < InteractionsBase
         check.complete!
         check.save
       end
+
+      Repository::CheckMailer.with(check:).notify_status_to_user.deliver_later
     else
+      check.fail!
       errors.merge!(linter_service.errors)
     end
   ensure
