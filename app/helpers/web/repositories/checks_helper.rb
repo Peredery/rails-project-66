@@ -7,7 +7,7 @@ module Web::Repositories::ChecksHelper
     "#{GITHUB_URL}/#{repository.full_name}/commit/#{sha}"
   end
 
-  def github_file_link(repository, path)
-    "#{GITHUB_URL}/#{repository.full_name}/#{path}"
+  def github_file_link(repository, path, sha)
+    "#{GITHUB_URL}/#{repository.full_name}/tree/#{sha}/#{path}"
   end
 end

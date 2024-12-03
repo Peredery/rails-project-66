@@ -30,6 +30,6 @@ class Linters::Base < InteractionsBase
   end
 
   def path_without_workdir(path)
-    path.gsub("#{repository_path}/", '')
+    path.gsub(Rails.root.join("#{repository_path}/").to_s, '')
   end
 end
